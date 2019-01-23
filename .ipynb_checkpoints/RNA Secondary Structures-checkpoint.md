@@ -13,7 +13,7 @@
 
 DNA는 이중 나선형 구조를 의미하는 double helices로 불리고 단일 가닥 구조인 RNA는 single strand로 불린다. 2차 구조를 의미하는 secondary structure란 RNA가 single strand는 DNA처럼 안정적인 구조가 아니기 때문에 접힘 현상이 발생하고, 이렇게 접힐 때 많은 영역들과 다시 결합하면서 새로운 구조를 띄게 된다. 이것을 RNA의 2차 구조라고 한다.
 
-![](assets/1548236357543.png)
+![1548236357543](assets/1548236357543.png)
 
 
 
@@ -71,7 +71,7 @@ Watson-Crick의 C-G 그리고 A-U 페어로 대부분을 이루고 있으며 일
 
 위의 첫번째 조건은 Tertiary Structure motif들 역시 해당되며(ex. Triplets, G-quartets, etc ..), 두번째 조건은 RNA의 backbone 이 너무 날카롭게 구부러 질 수 없음을 시사한다. 
 
-![](assets/1548236407182.png)
+![1548236407182](assets/1548236407182.png)
 
 마지막 조건은 위 그림에서 볼 수 있는 <u>Pseudoknot</u>이라는 특수한 구조에 대한 내용이다. Pseudoknot이 RNA 구조들에서 발생하는데 해당 참고 자료에서는 기본적으로 이를 tertiary structure motif로 분류하고 있다. 
 
@@ -83,7 +83,7 @@ Watson-Crick의 C-G 그리고 A-U 페어로 대부분을 이루고 있으며 일
 
 #### Secondary Structure Graph
 
-![](assets/1548236449593.png)
+![1548236449593](assets/1548236449593.png)
 
 
 
@@ -99,7 +99,7 @@ Watson-Crick의 C-G 그리고 A-U 페어로 대부분을 이루고 있으며 일
 
 그리고 위에서 제약 조건으로 건 3번째 사항 때문에 2차 구조 그래프가 Planar Graph(평면 그래프, 두 변이 꼭짓점을 제외하고는 만나지 않는 형태의 그래프)형태를 유지 할 수 있다. 더 정확히는 Outer Planar Graph 구조를 갖는다고 볼 수 있다.
 
-![](assets/planars.png)
+![planars](assets/planars.png)
 
 이러한 그래프 특성 덕분에 시퀀스의 backbone(순차적 연결 정보들)을 원형으로 구부려 모든 base pair들을 그리는 방식인 Circle Plot같은 시각화도 수행을 할 수 있다.
 
