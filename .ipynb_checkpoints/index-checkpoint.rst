@@ -9,7 +9,6 @@ Welcome to BLOG.IO's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   
    usage.md
    step1.md
    API.md
