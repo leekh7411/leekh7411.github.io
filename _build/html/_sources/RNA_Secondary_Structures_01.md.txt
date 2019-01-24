@@ -1,4 +1,4 @@
-# RNA Secondary Structures(1/4)
+# RNA Secondary Structures (1/7)
 
 **Information from** -  *RNA Secondary Structures, Ivo L. Hofacker and Peter F. Stadler. Institute for Thoretical Chemistry, Universitiy of Vienna, Wahringerstrasse 17, A-1090 Vienna, Austria. Bioinformatics Group, Department of Computer Science, and Interdisciplinary Center for Bioinformatics, University of Leipzig,*
 *Hartelstrasse 16-18, D-04107 Leipzig, Germany.*
