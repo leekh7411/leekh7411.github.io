@@ -1,4 +1,54 @@
 /* This file intentionally left blank. */
+.wy-side-nav-search{
+    background-color: #efefef !important;
+}
+
+.wy-side-nav-search a{
+    color: #afafaf;!important;
+    font-weight: bold;!important;
+}
+
+.wy-nav-top{
+    background: #efefef !important;
+}
+
+.wy-nav-top a {
+    color: #afafaf;!important;
+    font-weight: bold;!important;
+}
+
+.wy-side-nav-search input[type=text] {
+    width: 100%;
+    border-radius: 50px;
+    padding: 6px 12px;
+    border-color: #1113151c;!important;
+}
+
+.wy-nav-side {
+    color: #4c4c4c;
+    background: #efefef;
+}
+
+.wy-menu-vertical a {
+    display: inline-block;
+    line-height: 18px;
+    padding: .4045em 1.618em;
+    display: block;
+    position: relative;
+    font-size: 90%;
+    color: #494949;
+}
+
+.wy-nav-content {
+
+    max-width: 1200px;
+}
+
 .wy-body-for-nav {
     background: #ffffff !important;
+}
+
+.wy-nav-content {
+    margin: 0;
+    background: #ffffff;!important;
 }
