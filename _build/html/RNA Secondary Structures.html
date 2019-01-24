@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RNA Secondary Structures &mdash; BLOG.IO 1.0 documentation</title>
+  <title>RNA Secondary Structures(1/4) &mdash; BLOG.IO 1.0 documentation</title>
   
 
   
@@ -81,7 +81,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">RNA Secondary Structures</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RNA Secondary Structures(1/4)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#secondary-structure-graphs">1. Secondary Structure Graphs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">1.1 Introduction</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rna-2">RNA 2차 구조</a></li>
@@ -94,9 +94,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">1.2 Secondary Structure Graphs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#constraints">Constraints</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#secondary-structure-graph">Secondary Structure Graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mountain-plots-and-dot-plots">Mountain Plots and Dot Plots</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#mountain-plots-and-dot-plots">1.3 Mountain Plots and Dot Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trees-and-forests">1.4 Trees and Forests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">1.5 Notes.</a></li>
 </ul>
 </li>
 </ul>
@@ -149,7 +151,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>RNA Secondary Structures</li>
+      <li>RNA Secondary Structures(1/4)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="rna-secondary-structures">
-<h1>RNA Secondary Structures<a class="headerlink" href="#rna-secondary-structures" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="rna-secondary-structures-1-4">
+<h1>RNA Secondary Structures(1/4)<a class="headerlink" href="#rna-secondary-structures-1-4" title="Permalink to this headline">¶</a></h1>
 <p><strong>Information from</strong> -  <em>RNA Secondary Structures, Ivo L. Hofacker and Peter F. Stadler. Institute for Thoretical Chemistry, Universitiy of Vienna, Wahringerstrasse 17, A-1090 Vienna, Austria. Bioinformatics Group, Department of Computer Science, and Interdisciplinary Center for Bioinformatics, University of Leipzig,</em>
 <em>Hartelstrasse 16-18, D-04107 Leipzig, Germany.</em></p>
 <div class="section" id="secondary-structure-graphs">
@@ -236,14 +238,24 @@
 <p><img alt="_images/planars.png" src="_images/planars.png" /></p>
 <p>이러한 그래프 특성 덕분에 시퀀스의 backbone(순차적 연결 정보들)을 원형으로 구부려 모든 base pair들을 그리는 방식인 Circle Plot같은 시각화도 수행을 할 수 있다.</p>
 </div>
+</div>
 <div class="section" id="mountain-plots-and-dot-plots">
-<h4>Mountain Plots and Dot Plots<a class="headerlink" href="#mountain-plots-and-dot-plots" title="Permalink to this headline">¶</a></h4>
+<h3>1.3 Mountain Plots and Dot Plots<a class="headerlink" href="#mountain-plots-and-dot-plots" title="Permalink to this headline">¶</a></h3>
 <p>RNA의 2차 구조를 표현하는데 사용되는 다른 방법들로는 앞선 그림에서 볼 수 있는 Mountain Plot과 Dot Plot이 있다. 간략하게 각 Plot의 특징에 대해 짚고 넘어간다.</p>
 <ul class="simple">
 <li>Mountain Plot의 특징으로는 거대한 2차 구조나 다른 구조들과의 비교를 할 경우에 적합하다는 것이다. 이 방식의경우 단일 2차 구조가 2차원 평면 그래프로 그려진다.</li>
 <li>Dot Plot은 각 (i, j)번째 값이 연결 정보(True/False)로 구성된 matrix이다. 간단하게 그래프의 인접행렬을 생각하면 되겠다. Dot Plot은 겹쳐진 여러 구조적 특성을 한번에 파악하기 좋은 표현 방법이다.</li>
 </ul>
 </div>
+<div class="section" id="trees-and-forests">
+<h3>1.4 Trees and Forests<a class="headerlink" href="#trees-and-forests" title="Permalink to this headline">¶</a></h3>
+<p>2차 구조 정보를 문자열을 활용해 효율적으로 저장하는 기법을 bracket notation 라고 한다. 해당 기법은 간략하게 설명하자면 시퀀스 위치 $i$ 가 unpaired(2차 결합 x) 부분인 경우 dot(“.”)을 기입한다. 만약 paired인 경우 연결되는 $j$의 ($i &lt; j$라고 가정) 경우 $i$ 와 $j$ 에 각각  open bracket( “ ( “ )과 closed bracket( “ ) “ )을 기입한다.</p>
+<p>또한 아래와 같이 트리를 이용해 2차 구조를 표현하는 방법도 존재한다.</p>
+<p><img alt="_images/1548295312721.png" src="_images/1548295312721.png" /></p>
+</div>
+<div class="section" id="notes">
+<h3>1.5 Notes.<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p>앞서 살펴 보았듯이 RNA 2차 구조는 Planar graph 형태를 취한다. 이는 2차 구조를 그려내는것에 있어 겹치는 부분이 없기 때문에 어떠한 구조던지 그릴 수 있다는 장점이 있다. 하지만 여전히 거대한 2차 구조에 대한 시각적 규명은 어려운 상태다.  이처럼 Layout algorithm들은 대부분 트리와 같은 형태를 띄다 보니 pseudoknot같은 구조에 취약하다는 것을 알 수 있다</p>
 </div>
 </div>
 </div>
