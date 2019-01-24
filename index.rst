@@ -12,9 +12,7 @@ Welcome to BLOG.IO's documentation!
    
    RNA_Secondary_Structures_01.md
    RNA_Secondary_Structures_02.md
-   usage.md
-   step1.md
-   API.md
+   RNA_Secondary_Structures_03.md
    
 Indices and tables
 ==================
