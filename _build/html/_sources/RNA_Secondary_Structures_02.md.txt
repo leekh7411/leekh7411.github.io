@@ -65,7 +65,7 @@ mismatch 에너지는 닫힌 loop 내부의 unpaired base들로 부터 계산 �
 
 
 
-#### 2.3 Notes
+### 2.3 Notes
 
 Multi loop 내의 인접한 나선형 구조는 single extended helix를 구성하기 위해 co-axially, 공통된 축으로, 쌓일 수 있다고 한다. 
 
