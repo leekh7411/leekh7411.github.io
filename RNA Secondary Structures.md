@@ -1,4 +1,4 @@
-# RNA Secondary Structures
+# RNA Secondary Structures(1/4)
 
 **Information from** -  *RNA Secondary Structures, Ivo L. Hofacker and Peter F. Stadler. Institute for Thoretical Chemistry, Universitiy of Vienna, Wahringerstrasse 17, A-1090 Vienna, Austria. Bioinformatics Group, Department of Computer Science, and Interdisciplinary Center for Bioinformatics, University of Leipzig,*
 *Hartelstrasse 16-18, D-04107 Leipzig, Germany.*
@@ -105,10 +105,26 @@ Watson-Crick의 C-G 그리고 A-U 페어로 대부분을 이루고 있으며 일
 
 
 
-#### Mountain Plots and Dot Plots
+### 1.3 Mountain Plots and Dot Plots
 
 RNA의 2차 구조를 표현하는데 사용되는 다른 방법들로는 앞선 그림에서 볼 수 있는 Mountain Plot과 Dot Plot이 있다. 간략하게 각 Plot의 특징에 대해 짚고 넘어간다.
 
 - Mountain Plot의 특징으로는 거대한 2차 구조나 다른 구조들과의 비교를 할 경우에 적합하다는 것이다. 이 방식의경우 단일 2차 구조가 2차원 평면 그래프로 그려진다.
-
 - Dot Plot은 각 (i, j)번째 값이 연결 정보(True/False)로 구성된 matrix이다. 간단하게 그래프의 인접행렬을 생각하면 되겠다. Dot Plot은 겹쳐진 여러 구조적 특성을 한번에 파악하기 좋은 표현 방법이다.
+
+
+
+### 1.4 Trees and Forests
+
+2차 구조 정보를 문자열을 활용해 효율적으로 저장하는 기법을 bracket notation 라고 한다. 해당 기법은 간략하게 설명하자면 시퀀스 위치 $i$ 가 unpaired(2차 결합 x) 부분인 경우 dot(".")을 기입한다. 만약 paired인 경우 연결되는 $j$의 ($i < j$라고 가정) 경우 $i$ 와 $j$ 에 각각  open bracket( " ( " )과 closed bracket( " ) " )을 기입한다. 
+
+또한 아래와 같이 트리를 이용해 2차 구조를 표현하는 방법도 존재한다. 
+
+![](assets/1548295312721.png)
+
+
+
+### 1.5 Notes.
+
+앞서 살펴 보았듯이 RNA 2차 구조는 Planar graph 형태를 취한다. 이는 2차 구조를 그려내는것에 있어 겹치는 부분이 없기 때문에 어떠한 구조던지 그릴 수 있다는 장점이 있다. 하지만 여전히 거대한 2차 구조에 대한 시각적 규명은 어려운 상태다.  이처럼 Layout algorithm들은 대부분 트리와 같은 형태를 띄다 보니 pseudoknot같은 구조에 취약하다는 것을 알 수 있다
+
