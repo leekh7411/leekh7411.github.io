@@ -24,14 +24,16 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage: Sphinx with Markdown" href="usage.html" />
+    <link rel="prev" title="Welcome to BLOG.IO’s documentation!" href="index.html" /> 
 
   
-  <script src="../_static/js/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -47,7 +49,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> BLOG.IO
+            <a href="index.html" class="icon icon-home"> BLOG.IO
           
 
           
@@ -60,7 +62,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -78,10 +80,32 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage: Sphinx with Markdown</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../step1.html">Usage: Step1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../API.html">API</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RNA Secondary Structures(1/4)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#secondary-structure-graphs">1. Secondary Structure Graphs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">1.1 Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rna-2">RNA 2차 구조</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rna-3-rna-tertiary-structure-1-2-2-3">RNA 3차 구조(RNA Tertiary Structure)와 1&gt;2접힘, 2&gt;3 접힘 과정</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functional-rnas">Functional RNAs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prediction-of-structures">Prediction of Structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rna-secondary-structure-2">RNA secondary structure는 2개의 클래스로…</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.2 Secondary Structure Graphs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constraints">Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#secondary-structure-graph">Secondary Structure Graph</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mountain-plots-and-dot-plots">1.3 Mountain Plots and Dot Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trees-and-forests">1.4 Trees and Forests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">1.5 Notes.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage: Sphinx with Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step1.html">Usage: Step1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API.html">API</a></li>
 </ul>
 
             
@@ -96,7 +120,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">BLOG.IO</a>
+          <a href="index.html">BLOG.IO</a>
         
       </nav>
 
@@ -125,7 +149,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
       <li>RNA Secondary Structures(1/4)</li>
     
@@ -133,7 +157,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/.ipynb_checkpoints/RNA Secondary Structures-checkpoint.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/RNA_Secondary_Structures_01.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -157,7 +181,7 @@
 <div class="section" id="rna-2">
 <h4>RNA 2차 구조<a class="headerlink" href="#rna-2" title="Permalink to this headline">¶</a></h4>
 <p>DNA는 이중 나선형 구조를 의미하는 double helices로 불리고 단일 가닥 구조인 RNA는 single strand로 불린다. 2차 구조를 의미하는 secondary structure란 RNA가 single strand는 DNA처럼 안정적인 구조가 아니기 때문에 접힘 현상이 발생하고, 이렇게 접힐 때 많은 영역들과 다시 결합하면서 새로운 구조를 띄게 된다. 이것을 RNA의 2차 구조라고 한다.</p>
-<p><img alt=".ipynb_checkpoints/assets/1548236357543.png" src=".ipynb_checkpoints/assets/1548236357543.png" /></p>
+<p><img alt="_images/1548236357543.png" src="_images/1548236357543.png" /></p>
 </div>
 <div class="section" id="rna-3-rna-tertiary-structure-1-2-2-3">
 <h4>RNA 3차 구조(RNA Tertiary Structure)와 1&gt;2접힘, 2&gt;3 접힘 과정<a class="headerlink" href="#rna-3-rna-tertiary-structure-1-2-2-3" title="Permalink to this headline">¶</a></h4>
@@ -198,20 +222,20 @@
 <li>No two base pairs ( i , j ) and ( k , l ) $\in \Omega$  “cross” in the sense that i &lt; k &lt; j &lt; l. Matchings that contain no crossing edges are known as loop matchings or circular matchings.</li>
 </ol>
 <p>위의 첫번째 조건은 Tertiary Structure motif들 역시 해당되며(ex. Triplets, G-quartets, etc ..), 두번째 조건은 RNA의 backbone 이 너무 날카롭게 구부러 질 수 없음을 시사한다.</p>
-<p><img alt=".ipynb_checkpoints/assets/1548236407182.png" src=".ipynb_checkpoints/assets/1548236407182.png" /></p>
+<p><img alt="_images/1548236407182.png" src="_images/1548236407182.png" /></p>
 <p>마지막 조건은 위 그림에서 볼 수 있는 <u>Pseudoknot</u>이라는 특수한 구조에 대한 내용이다. Pseudoknot이 RNA 구조들에서 발생하는데 해당 참고 자료에서는 기본적으로 이를 tertiary structure motif로 분류하고 있다.</p>
 <p>동시에 이를 제약사항으로 걸었는데, 이는 사용되어지는 대부분의 Dynamic programming 알고리즘들이 이러한 pseudoknot을 처리하지 못하기 때문이기도 하다. 기존의 알고리즘들이 정복하지 못한 구조를 예측하는데 성공한다면 좀 더 정확한 3차 구조의 예측 및 2차 구조 예측에 도움이 될 것으로 보인다</p>
 <p>이러한 Pseudoknot은 RNA Tertiary Structure를 예측하기 위한 첫 걸음이라고 볼 수 있다.</p>
 </div>
 <div class="section" id="secondary-structure-graph">
 <h4>Secondary Structure Graph<a class="headerlink" href="#secondary-structure-graph" title="Permalink to this headline">¶</a></h4>
-<p><img alt=".ipynb_checkpoints/assets/1548236449593.png" src=".ipynb_checkpoints/assets/1548236449593.png" /></p>
+<p><img alt="_images/1548236449593.png" src="_images/1548236449593.png" /></p>
 <p>위 그림은 RNA 2차 구조를 표현하고 시각하 하기 위한 다양한 방법들이다. 왼쪽 부터 차례로 Circle Plot, Conventional <strong>Secondary Structure Graph</strong>, Mountain Plot, Dot Plot 이다. 나열된 4개 그림 아래의 표기 방식은 “Bracket Notation”이라고 불리는 방식이다.</p>
 <p>이처럼 다양한 방식으로 2차 구조를 표현 할 수 있다. Secondary Structure Graph라고 불리는 것 역시 그 중 하나다. 오직 2개의 edge만을 가진다. 하나는 RNA 시퀀스 순서 구성을 위한 용도로, 다른 하나는 base paring들을 위해 사용된다.</p>
 <blockquote>
 <div>RNA 2차 구조에 대한 이론적 제한 사항이나 특성들을 모델 학습에 사용하면 성능 향상에 도움이 될 수 있다</div></blockquote>
 <p>그리고 위에서 제약 조건으로 건 3번째 사항 때문에 2차 구조 그래프가 Planar Graph(평면 그래프, 두 변이 꼭짓점을 제외하고는 만나지 않는 형태의 그래프)형태를 유지 할 수 있다. 더 정확히는 Outer Planar Graph 구조를 갖는다고 볼 수 있다.</p>
-<p><img alt=".ipynb_checkpoints/assets/planars.png" src=".ipynb_checkpoints/assets/planars.png" /></p>
+<p><img alt="_images/planars.png" src="_images/planars.png" /></p>
 <p>이러한 그래프 특성 덕분에 시퀀스의 backbone(순차적 연결 정보들)을 원형으로 구부려 모든 base pair들을 그리는 방식인 Circle Plot같은 시각화도 수행을 할 수 있다.</p>
 </div>
 </div>
@@ -227,7 +251,7 @@
 <h3>1.4 Trees and Forests<a class="headerlink" href="#trees-and-forests" title="Permalink to this headline">¶</a></h3>
 <p>2차 구조 정보를 문자열을 활용해 효율적으로 저장하는 기법을 bracket notation 라고 한다. 해당 기법은 간략하게 설명하자면 시퀀스 위치 $i$ 가 unpaired(2차 결합 x) 부분인 경우 dot(“.”)을 기입한다. 만약 paired인 경우 연결되는 $j$의 ($i &lt; j$라고 가정) 경우 $i$ 와 $j$ 에 각각  open bracket( “ ( “ )과 closed bracket( “ ) “ )을 기입한다.</p>
 <p>또한 아래와 같이 트리를 이용해 2차 구조를 표현하는 방법도 존재한다.</p>
-<p><img alt=".ipynb_checkpoints/assets/1548295312721.png" src=".ipynb_checkpoints/assets/1548295312721.png" /></p>
+<p><img alt="_images/1548295312721.png" src="_images/1548295312721.png" /></p>
 </div>
 <div class="section" id="notes">
 <h3>1.5 Notes.<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
@@ -241,6 +265,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage: Sphinx with Markdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to BLOG.IO’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -268,16 +301,16 @@
 
     
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/custom.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/custom.js"></script>
     
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
