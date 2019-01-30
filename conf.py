@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'RESEARCH.MD.IO'
+project = 'RESEARCH.MD'
 copyright = '2019, Kwangho Lee'
 author = 'Kwangho Lee'
 
@@ -131,7 +131,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'BLOGIOdoc'
+htmlhelp_basename = 'RESEARCHMDdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -158,7 +158,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'BLOGIO.tex', 'BLOG.IO Documentation',
+    (master_doc, 'RESEARCHMD.tex', 'RESEARCH.MD Documentation',
      'Kwangho Lee', 'manual'),
 ]
 
@@ -168,7 +168,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'blogio', 'BLOG.IO Documentation',
+    (master_doc, 'research.md', 'RESEARCH.MD Documentation',
      [author], 1)
 ]
 
@@ -179,8 +179,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'BLOGIO', 'BLOG.IO Documentation',
-     author, 'BLOGIO', 'One line description of project.',
+    (master_doc, 'RESEARCHMD', 'RESEARCH.MD Documentation',
+     author, 'RESEARCHMD', 'One line description of project.',
      'Miscellaneous'),
 ]
 
