@@ -3,7 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to BLOG.IO's documentation!
+===== 
+Markdown Research Notes 2019
+===== 
+#Machine Learning #Bioinformatics #Reinforcement Learning 
+-------- 
 ===================================
 
 .. toctree::
@@ -20,3 +24,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+ 
