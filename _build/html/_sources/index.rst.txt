@@ -17,6 +17,7 @@ Markdown Research Notes 2019
    RNA_Secondary_Structures_01.md
    RNA_Secondary_Structures_02.md
    RNA_Secondary_Structures_03.md
+   Markow_Decision_Process_For_RNA_SSP.md
    
 Indices and tables
 ==================
