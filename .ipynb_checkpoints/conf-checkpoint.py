@@ -204,5 +204,5 @@ epub_exclude_files = ['search.html']
 
 def setup(app):
     print("setup!!!")
-    app.add_javascript("custom.js")
+    #app.add_javascript("math.js")
     app.add_stylesheet("custom.css")
