@@ -91,9 +91,9 @@ Agent에 해당하는 RNA는 보상을 최대화 하는 정책 $\pi(a|s, p)​$�
 * RNA는 현재 상태(시퀀스, 구조)에서 자유에너지를 최소로 하는 pair를 선택 한다
 * 환경은 RNA가 선택한 pair에 따른 보상과 다음 상태를 제공한다
 
-### 2.3 Reinforcement Algorithm
+### 2.3 Reinforcement Algorithm with Deep learning
 
-이제 위와 같은 정의를 바탕으로 
+RNA 2차 구조 예측 문제를 강화학습으로 풀이하기 위한 위 정의를 바탕으로 적절한 강화학습 알고리즘을 해당 문제에 적용해본다. 우리는 최근 강화학습에 Deep learning을 적용한 Deep Reinforcement Learning을 사용하도록 한다. 이는 전통적인 RL 알고리즘에서 일부를 Deep learning 모듈로 대체한 방식이다. Deep RL method에 대한 내용은 #3에서 이어서 소개한다
 
  
 
