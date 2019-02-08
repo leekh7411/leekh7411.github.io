@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>A Brief Review of Probability Theory &mdash; RESEARCH.MD 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="About the Markov Decision Process(MDP)" href="About_The_Markov_Decision_Process.html" /> 
+<style TYPE="text/css">
+code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
+</style>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] // removed 'code' entry
+    }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RESEARCH.MD
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="RNA_Secondary_Structures_01.html">RNA Secondary Structures (1/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RNA_Secondary_Structures_02.html">RNA Secondary Structures (2/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RNA_Secondary_Structures_03.html">RNA Secondary Structures (3/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markow_Decision_Process_For_RNA_SSP_01.html">Markov Decision Process For Predict RNA Secondary Structure #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markow_Decision_Process_For_RNA_SSP_02.html">Markov Decision Process For Predict RNA Secondary Structure #2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="About_The_Markov_Decision_Process.html">About the Markov Decision Process(MDP)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">A Brief Review of Probability Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#probability">Probability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">1. introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">확률에 대한 2가지 관점</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bayesian-interpolation">Bayesian interpolation 관점의 장점</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. A brief review of probability theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#discrete-random-variables">2.1 Discrete random variables(이산 확률 변수)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fundamental-rules">2.2 Fundamental Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-generative-classifier">2.3 Example: Generative Classifier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RESEARCH.MD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>A Brief Review of Probability Theory</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/A_Brief_Review_of_Probability_Theory.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <hr class="docutils" />
+<p><strong>Written by LeeKH</strong>*</p>
+<div class="section" id="a-brief-review-of-probability-theory">
+<h1>A Brief Review of Probability Theory<a class="headerlink" href="#a-brief-review-of-probability-theory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="probability">
+<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction">
+<h3>1. introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>확률에 대한 2가지 관점<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>“코인을 던졌을때  윗면이 나올 확률은 0.5이다”에서 ‘확률’이 의미하는바를 2가지로 나눠 정의 할 수 있음<ul>
+<li>Frequentist interpolation 으로 불리는 관점에서 확률이란, 수 많은 시행에서 사건이 발생한 회수로 정의된다. 무한히 동전을 던지면 앞면과 뒷면이 나오는 횟수가 1:1에 비례하므로 확률을 0.5로 정의하는 것이다</li>
+<li>Bayesian interpolation 의 관점에서 확률은, 다음 시행에서 동전이 발생하는 사건은 앞면(head)또는 뒷면(tail) 2가지 경우가 발생할 확률이 동일하므로 0.5라고 정의하는 것이다</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="bayesian-interpolation">
+<h4>Bayesian interpolation 관점의 장점<a class="headerlink" href="#bayesian-interpolation" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>극지방의 얼음이 2020년까지 녹을 확률을 구한다고 가정해볼때 long term frequency 관점에서는 이것이 일어날 수도 안 일어 날 수도 있기 때문에 확률을 규정하기가 힘들다</li>
+<li>반면 Bayesian 관점에서는 이런 불확정성에 대한 확률을 규정하기 매우 편리하다</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>2. A brief review of probability theory<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="discrete-random-variables">
+<h4>2.1 Discrete random variables(이산 확률 변수)<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p class="first">Binary event에 대한 개념을 확장시켜 discrete random variable로 생각할 수 있다. Binary event란 예를 들어, 내일 비가 올 것이다 = A 라고 할 때 A = 1 이면 비가 오는 것이고 A = 0 이면 비가 오지 않는 2가지 경우로 사건을 나누어 결정하는 방식이다</p>
+</li>
+<li><p class="first">Probability Mass Function(확률 질량 함수)를 $p()$라고 나타내고 어떤 사건의 확률 변수를 discrete random variable로 하여 $X$로 나타낸다면,</p>
+<ul class="simple">
+<li>사건 $x$가 발생할 확률을 $P(X = x)$ 또는 $p(x)$로 간단히 정의 가능하다</li>
+<li>확률 $p(x)$는 $0 \le p(x) \le 1$의 범위를 갖는다</li>
+<li>모든 사건에 대한 확률의 합은 $\sum_{x \in X}P(X=x) = 1$이다</li>
+</ul>
+</li>
+<li><p class="first">상태 공간(state space)이 $X =$ {1,2,3,4,5}로 정의할 경우,</p>
+<ul class="simple">
+<li>Uniform distribution의 확률 분포를 가질 경우 $p(x) = 1/5$이다</li>
+<li>Degenerate distribution의 확률 분포를 가질 경우 $p(x) = \mathbb{I}(x=1)$라고 표기되는 경우 항상 값 1을 갖는다. $\mathbb{I}()​$는 indicator function이라고 한다. 지시함수라고 번역되어 불리기도한다. 특정 값이 집합에 속할 경우 1을, 그렇지 않은 경우 0을 가진다</li>
+</ul>
+<p><img alt="_images/1549543247212.png" src="_images/1549543247212.png" /></p>
+<ul class="simple">
+<li>좌측 그래프는 Uniform distribution을, 우측 그래프는 Degenerate distribution을 나타내고 있다</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="fundamental-rules">
+<h4>2.2 Fundamental Rules<a class="headerlink" href="#fundamental-rules" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="a-probability-of-a-union-of-two-events">
+<h5>a. Probability of a union of two events<a class="headerlink" href="#a-probability-of-a-union-of-two-events" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li>2개의 서로 다른 사건 $A, B​$가 존재할 경우 $A​$ or $B​$의 확률을 계산하는 것을 union이라 한다</li>
+<li>$p(A \vee B) = p(A) + p(B) - p(A \wedge B)$로 정의 할 수 있다</li>
+<li>만약 사건 $A$와 $B$가 서로 연관성이 없는 상태(Mutually Exclusive)의 경우 $p(A) + p(B)$로 정의 가능하다</li>
+</ul>
+</div>
+<div class="section" id="b-joint-probabilities">
+<h5>b. Joint probabilities<a class="headerlink" href="#b-joint-probabilities" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li>2개의 서로 다른 사건 $A, B$가 존재할 경우 $A$ and $B$를 joint event라고 하며 이 확률 분포를 joint distribution이라 한다. 수식으로는 다음과 같이 나타낼 수 있다<ul>
+<li>$p(A, B) = p(A \wedge B) = p(A|B)p(B)​$</li>
+<li>$p(A,B) = p(A|B)p(B)$로 나타내는 것을 product rule이라고 부른다</li>
+</ul>
+</li>
+<li>특정 사건 $A$의 확률을 연관된 사건 $B$와 함께 고려하는 경우 joint distribution의 합으로 표현 가능한 marginal distribution을 다음과 같이 표현한다<ul>
+<li>$p(A) = \sum_{b}p(A, B) = \sum_{b}p(A|B = b)p(B=b)$</li>
+<li>Joint distribution에 product rule을 적용하여 위 공식과 같이 표현이 가능함</li>
+<li>Sum rule 또는 rule of total probability 라고 불린다</li>
+</ul>
+</li>
+<li>Product rule을 여러번 적용 가능한데 이런 경우를 chain rule of probability라고 한다. 간단하게 3개 사건 $A, B, C$에 대해서 joint distribution을 chain rule로 풀어쓰면 아래와 같다</li>
+</ul>
+<p>$$
+p(A,B,C) = p(A|B,C)p(B,C)=p(A|B,C)p(B|C)p(C)
+$$</p>
+<p><img alt="_images/text-mining-from-bayes-rule-to-dependency-parsing-20-638.jpg" src="_images/text-mining-from-bayes-rule-to-dependency-parsing-20-638.jpg" /></p>
+<p>[출처: Text mining - from Bayes rule to dependency parsing, Florian Leitner]</p>
+<ul class="simple">
+<li>위 그림은 조건부 확률과 Chain rule의 예시를 노란색(Y), 파란색(B)공을 꺼내는 예시로 잘 보여주고 있다<ul>
+<li>파란공 2개 노란공 1개를 꺼내는 확률은 $P(B,Y,B)$로 볼 수 있다</li>
+<li>공을 꺼내는 과정을 단계별로 표현하는 것과 chain rule을 통해 풀어나가는 방식과 동일하다는 것을 볼 수 있다</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="c-conditional-probability">
+<h5>c. Conditional probability<a class="headerlink" href="#c-conditional-probability" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li>사건 $A$가 주어진 사건 $B = True$인 경우의 확률을 조건부 확률(Conditional prob)이라고 한다</li>
+<li>사건 $B$가 발생해야 한다는 것이 조건으로 작용한다</li>
+<li>아래와 같이 표현 가능하다<ul>
+<li>$p(A|B) = \frac{p(A, B)}{p(B)}$ if $p(B) &gt; 0$</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="d-bayes-rule">
+<h5>d. Bayes rule<a class="headerlink" href="#d-bayes-rule" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p class="first">Bayes rule이라고 불리는 이것은 3가지 정의를 함께 사용한다</p>
+<ul class="simple">
+<li>Conditional Probability</li>
+<li>Product Rule</li>
+<li>Sum Rule</li>
+</ul>
+</li>
+<li><p class="first">Conditional Probability $p(A|B)$ 는 Joint probability인 $p(A,B)$ 에 조건 B의 확률 $p(B)$를 나눈 값으로 표현이 가능하다</p>
+<ul class="simple">
+<li>Joint probability $p(A,B)$(=$p(B,A)$)는 product rule을 적용하면 아래 2가지 식으로 표현이 가능하다<ul>
+<li>$p(A|B)p(B)​$</li>
+<li>$p(B|A)p(A)$</li>
+<li>두가지로 표현이 가능하지만 첫번째 공식의 경우 수식에 변화가 없으므로 두번째 표현식을 사용한다</li>
+</ul>
+</li>
+<li>사건 $B$의 확률 $p(B)$는 사건 $A$에 대한 marginal distribution으로 표현하는 경우, sum rule을 적용하면 아래와 같이 표현이 가능하다<ul>
+<li>$p(B) = \sum_{a \in A} p(A=a)p(B|A=a)$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">다시, Conditional Probability $p(A|B)$를 위 두가지 기법을 각각 적용한 결과 아래와 같은 수식들을 얻을 수 있고 이를 <strong>Bayes rule, Bayes Theorem</strong> 이라고 한다</p>
+<p>$$
+p(A|B) = \frac{p(A,B)}{p(B)} = \frac{p(B|A)p(A)}{p(B)} = \frac{p(B|A)p(A)}{\sum_{a \in A} p(A=a)p(B|A=a)}
+$$</p>
+</li>
+</ul>
+</div>
+<div class="section" id="e-example-cancer-detection-problem">
+<h5>e.Example (Cancer Detection Problem)<a class="headerlink" href="#e-example-cancer-detection-problem" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p class="first">확률 변수 $X$를 암 검진 테스트 결과라고 하고, $Y​$는 실제 암의 발병 여부라고 하자</p>
+</li>
+<li><p class="first">암 검진 테스트기의 Sensitivity를 80%라고 하자. 이것이 의미하는 것은 검진 대상자가 실제로 암에 걸린 상태($Y = 1$)에서 테스트기의 성공 확률($X=1$)이 0.80임을 의미한다. 즉 조건부 확률이다</p>
+<ul class="simple">
+<li>$p(X=1|Y=1) = 0.80$</li>
+</ul>
+</li>
+<li><p class="first">사전 확률 $p(Y=1)$은 실제로 암에 걸렸을 확률이다. 암 검진 테스트시 양성일 확률이 80%라는 것은 대상이 실제로 암에 걸렸을 확률을 의미하는 것은 아니다. 이는 사전 확률을 고려하지 않고 생각하는 대표적인 오류(<strong>base rate fallacy</strong>)다. 다행히도 사람이 실제 암에 걸리는 확률은 0.4%라고 하자</p>
+<ul class="simple">
+<li>$p(Y = 1) = 0.004$</li>
+</ul>
+</li>
+<li><p class="first">테스트기가 오작동 하는 확률은 어떻게 계산할 수 있을까? 오작동하는 경우의 조건부 확률은 아래 2가지 경우로 볼 수 있다</p>
+<ul class="simple">
+<li>False Positive(암에 안걸렸는데 암이라고 판단한 경우) : $p(X=1|Y=0) = 0.1$</li>
+<li>True Negative(암에 걸렸는데 암이 아니라고 판단한 경우) : $p(X=0|Y=1) = ??$</li>
+</ul>
+</li>
+<li><p class="first">그럼 실제로 내가 암에 걸렸을 확률은 어떻게 구할 수 있을까? 이는 암 검진 테스트를 했을 경우 양성으로 판단되어야 하는 전제 조건을 갖는다고 하자. 아래와 같이 정리할 수 있다</p>
+<p><img alt="_images/1549548732606.png" src="_images/1549548732606.png" /></p>
+</li>
+<li><p class="first"><em><strong>테스트 결과가 양성일 경우 실제로 암일 확률은 3%에 불과하다</strong></em></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="example-generative-classifier">
+<h4>2.3 Example: Generative Classifier<a class="headerlink" href="#example-generative-classifier" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p class="first">암 진단 문제를 어떤 임의의 특징 벡터 $\mathbb{x}$를 분류하는 문제로 일반화 시킨다고 생각할 경우,</p>
+<p>$$
+p(y=class|\mathbb{x},\theta) = \frac{p(y=class|\theta)p(\mathbb{x}|y=class,\theta)}{p(\mathbb{x}|\theta)} = \frac{p(y=class|\theta)p(\mathbb{x}|y=class,\theta)}{\sum_{c’}p(\mathbb{x}|y=c’,\theta)p(y=c’|\theta)}
+$$</p>
+</li>
+<li><p class="first">이와 같은 모델을 Generative Classifier라고 한다</p>
+</li>
+<li><p class="first">Generative 모델로 불리는 이유는 class-conditional density $p(\mathbb{x}|y=c)$와 class prior $p(y=c)$를 사용하여 어떻게 data를 generate하는지 명시하고 있기 때문이다(?)</p>
+</li>
+<li><p class="first">Class Posterior $p(y=c|\mathbb{x})$ 를 바로 fit하는 방식도 있는데 이는 disciriminative classifier로 알려져 있다</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="About_The_Markov_Decision_Process.html" class="btn btn-neutral" title="About the Markov Decision Process(MDP)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kwangho Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
