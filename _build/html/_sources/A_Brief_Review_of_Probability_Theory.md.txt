@@ -88,7 +88,7 @@
 $$
 p(A,B,C) = p(A|B,C)p(B,C)=p(A|B,C)p(B|C)p(C)
 $$
-  
+
 
 ![](assets/text-mining-from-bayes-rule-to-dependency-parsing-20-638.jpg)
 
@@ -196,3 +196,8 @@ $$
 
 * Class Posterior $p(y=c|\mathbb{x})$ 를 바로 fit하는 방식도 있는데 이는 disciriminative classifier로 알려져 있다    
 
+
+
+## References
+
+- Machine Learning A Probabilistic Perspective, Kevin P. Murphy, 2012

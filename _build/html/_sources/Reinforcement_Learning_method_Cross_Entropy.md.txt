@@ -108,3 +108,6 @@ cross-entropy 방법을 위 속성으로 분류하자면 아래와 같다
 * Monte-Carlo method에 속한다. Sampling을 통해 optimization하기 때문
 * 정책의 distribution과 Target distribution 사이의 KL-divergence 수치에서 cross-entropy를 최소화 하는 방향으로 학습을 진행해가기 때문에 cross-entropy method로 불린다
 
+## References
+
+- Deep Reinforcement Learning Hands-On, Maxim Lapan, 2018
