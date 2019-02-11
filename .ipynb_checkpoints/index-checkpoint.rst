@@ -6,7 +6,7 @@
 ===== 
 Markdown Research Notes 2019
 ===== 
-#Machine Learning #Bioinformatics #Reinforcement Learning 
+#Machine Learning #Bioinformatics #Reinforcement Learning #나혼자본다
 -------- 
 ===================================
 
@@ -22,6 +22,7 @@ Markdown Research Notes 2019
    About_The_Markov_Decision_Process.md
    A_Brief_Review_of_Probability_Theory.md
    Reinforcement_Learning_method_Cross_Entropy.md
+   The_Bellman_Equation_of_Optimality.md
    
 Indices and tables
 ==================
