@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Why we use the Q-function? &mdash; RESEARCH.MD 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The value iteration method" href="the_value_iteration_method.html" />
+    <link rel="prev" title="The Bellman equation of optimality" href="The_Bellman_Equation_of_Optimality.html" /> 
+<style TYPE="text/css">
+code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
+</style>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] // removed 'code' entry
+    }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RESEARCH.MD
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="RNA_Secondary_Structures_01.html">RNA Secondary Structures (1/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RNA_Secondary_Structures_02.html">RNA Secondary Structures (2/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RNA_Secondary_Structures_03.html">RNA Secondary Structures (3/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markow_Decision_Process_For_RNA_SSP_01.html">Markov Decision Process For Predict RNA Secondary Structure #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Markow_Decision_Process_For_RNA_SSP_02.html">Markov Decision Process For Predict RNA Secondary Structure #2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="About_The_Markov_Decision_Process.html">About the Markov Decision Process(MDP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Brief_Review_of_Probability_Theory.html">A Brief Review of Probability Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reinforcement_Learning_method_Cross_Entropy.html">One of the RL(Reinforcement Learning) method - Cross Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="The_Bellman_Equation_of_Optimality.html">The Bellman equation of optimality</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Why we use the Q-function?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#value-of-state-value-of-action">Value of state &amp; Value of action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#q-function-with-simple-example">Q-function with simple example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="the_value_iteration_method.html">The value iteration method</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RESEARCH.MD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Why we use the Q-function?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Value_of_Action_Q_function.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><em><strong>Written by LeeKH</strong></em></p>
+<div class="section" id="why-we-use-the-q-function">
+<h1>Why we use the Q-function?<a class="headerlink" href="#why-we-use-the-q-function" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="value-of-state-value-of-action">
+<h2>Value of state &amp; Value of action<a class="headerlink" href="#value-of-state-value-of-action" title="Permalink to this headline">¶</a></h2>
+<p>이전 글에서는 Bellman equation을 바탕으로 모든 행동들에 대한 가치 $V$를 계산하는 방법으로 최적 정책을 찾아 나갔다. 그 경우 가치 함수 $V$가 입력으로 받는 것은 상태 $s$뿐이다. 이번 글에서는 상태 $s$와 특정 행동 $a$를 입력으로 받아 그 가치를 계산하는 $Q$함수를 정의한다.</p>
+<p>$$
+Q_{s,a} = \mathbb{E}<em>{s’\sim S}[r</em>{s,a} + \gamma V_{s’}] = \sum_{s’ \in S}p_{a,s\to s’}(r_{s,a} + \gamma V_{s’})
+$$</p>
+<p>특정 행동과 상태를 고려하는 가치함수인 Q함수를 이용한 방법을 Q-Learning 이라고 한다. Q함수에 대한 수식과정을 살펴보면 이전의 가치함수, 벨만 방정식과 비슷한데 굳이 Q함수를 사용하는 이유는 실제 적용시의 편리함 때문이다. Value of state $V_s$를 Q함수로 표현하면,</p>
+<p>$$
+V_s = \max_{a\in A}Q_{s,a}
+$$</p>
+<p>즉 현재 상태에서의 최대 기대값이란, 현재 상태에서 할 수 있는 모든 행동들 각각의 기대값 중 가장 큰 값을 의미한다. $Q(s,a)$로 Q함수를 아래와 같이 recursive하게 정의하고 이후 Q-learning에 사용된다.</p>
+<p>$$
+Q(s,a) = r_{s,a} + \gamma \max_{a’ \in A}Q(s’, a’)
+$$</p>
+</div>
+<div class="section" id="q-function-with-simple-example">
+<h2>Q-function with simple example<a class="headerlink" href="#q-function-with-simple-example" title="Permalink to this headline">¶</a></h2>
+<p><img alt="_images/1549866500127.png" src="_images/1549866500127.png" /></p>
+<ul class="simple">
+<li>초기 상태 $S_{0}$에서 항상 시작한다</li>
+<li>다음 상태는 $S_{1,2,3,4}$뿐이며 해당 상태들에서 episode가 종료된다</li>
+<li>Agent는 위, 아래, 왼쪽, 오른쪽 총 4가지의 행동을 갖는다</li>
+<li>각 행동은 확률적이며 원래 가려던 방향으로 이동, 왼쪽이나 오른쪽으로 미끄러질 가능성이 모두 동일하다고 하자. 그렇다면 아래 그림과 같은 상태 이동 확률이 추가된 다이어그램으로 example을 설명할 수 있다</li>
+</ul>
+<p><img alt="_images/1549866788787.png" src="_images/1549866788787.png" /></p>
+<ul class="simple">
+<li>$S_{0}​$에서 $S_{1,2,3,4}​$이후의 상태는 없으므로 $S_{1,2,3,4}​$에서의 보상은 각 상태의 immediate reward값인 $r​$에 해당한다(위의 예시가 간단한 이유). $V_{1,2,3,4} = r_{1,2,3,4}​$</li>
+<li>$Q(s_0, left) = 0.33 \cdot V_1 + 0.33 \cdot V_2 + 0.33 \cdot V_3 = 0.33 \cdot 1 + 0.33 \cdot 2 + 0.33 \cdot 3​$</li>
+</ul>
+<p>위와 같은 방식으로 Q함수 값을 계산 가능하다. 그리고 실제로 적용하기에도 훨씬 편리하다. 아래 두 수식을 살펴보자.</p>
+<p>Q함수를 사용한다면 다음 행동 $a’$을 결정하기 위해 할 일은 그저 가장 큰 Q값에 해당하는 행동을 고르는 것이다.</p>
+<p>$$
+a’ = argmax_{a \in A}Q(s, a)
+$$</p>
+<p>반면에 value of states $V_s$를 사용하는 경우는,</p>
+<p>$$
+a’ = argmax_{a \in A}\mathbb{E}<em>{s \sim S}[r</em>{s,a}+\gamma V_s]=argmax_{a\in A}\sum_{s\in S}p_{a,0\to s}(r_{s,a}+\gamma V_s)
+$$</p>
+<p>위 수식에서 보여지듯이 상태 이동 확률과 각 상태의 가치 모두 알아야 한다.</p>
+<p>실제 학습 과정에서 각 상태의 가치나, 상태 이동 확률을 사전에 모두 파악하는 것은 매우 힘들다. 따라서 이를 고려하지 않는 Q함수를 사용하는것이 바람직하다</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Deep Reinforcement Learning Hands-On, Maxim Lapan, 2018</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="the_value_iteration_method.html" class="btn btn-neutral float-right" title="The value iteration method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="The_Bellman_Equation_of_Optimality.html" class="btn btn-neutral" title="The Bellman equation of optimality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kwangho Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

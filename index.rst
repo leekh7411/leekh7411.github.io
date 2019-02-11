@@ -23,6 +23,8 @@ Markdown Research Notes 2019
    A_Brief_Review_of_Probability_Theory.md
    Reinforcement_Learning_method_Cross_Entropy.md
    The_Bellman_Equation_of_Optimality.md
+   Value_of_Action_Q_function.md
+   the_value_iteration_method.md
    
 Indices and tables
 ==================
