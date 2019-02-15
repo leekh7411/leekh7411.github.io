@@ -6,12 +6,12 @@
 ===== 
 Markdown Research Notes 2019
 ===== 
-#Machine Learning #Bioinformatics #Reinforcement Learning #나혼자본다
+#Machine Learning #Bioinformatics #Reinforcement Learning
 -------- 
 ===================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
    
    RNA_Secondary_Structures_01.md
@@ -25,11 +25,7 @@ Markdown Research Notes 2019
    The_Bellman_Equation_of_Optimality.md
    Value_of_Action_Q_function.md
    the_value_iteration_method.md
+   deep_q_nets.md
    
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
  
