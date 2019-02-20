@@ -26,6 +26,7 @@ Markdown Research Notes 2019
    Value_of_Action_Q_function.md
    the_value_iteration_method.md
    deep_q_nets.md
+   Policy_Gradients.md
    
 
  
