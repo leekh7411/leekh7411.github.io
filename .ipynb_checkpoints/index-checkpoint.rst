@@ -27,6 +27,6 @@ Markdown Research Notes 2019
    the_value_iteration_method.md
    deep_q_nets.md
    Policy_Gradients.md
-   
+   Structure_Similarity_in_Graphs.md
 
  

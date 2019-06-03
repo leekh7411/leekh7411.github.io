@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The value iteration method &mdash; RESEARCH.MD 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+<style TYPE="text/css">
+code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
+</style>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] // removed 'code' entry
+    }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> RESEARCH.MD
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../RNA_Secondary_Structures_01.html">RNA Secondary Structures (1/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RNA_Secondary_Structures_02.html">RNA Secondary Structures (2/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RNA_Secondary_Structures_03.html">RNA Secondary Structures (3/7)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Markow_Decision_Process_For_RNA_SSP_01.html">Markov Decision Process For Predict RNA Secondary Structure #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Markow_Decision_Process_For_RNA_SSP_02.html">Markov Decision Process For Predict RNA Secondary Structure #2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About_The_Markov_Decision_Process.html">About the Markov Decision Process(MDP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../A_Brief_Review_of_Probability_Theory.html">A Brief Review of Probability Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reinforcement_Learning_method_Cross_Entropy.html">One of the RL(Reinforcement Learning) method - Cross Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../The_Bellman_Equation_of_Optimality.html">The Bellman equation of optimality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Value_of_Action_Q_function.html">Why we use the Q-function?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_value_iteration_method.html">The value iteration method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_q_nets.html">Deep Q-Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Policy_Gradients.html">Policy Gradients(PG)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Structure_Similarity_in_Graphs.html">Graph Structure’s Similarity methods</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RESEARCH.MD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>The value iteration method</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/.ipynb_checkpoints/the_value_iteration_method-checkpoint.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><em><strong>Written by LeeKH</strong></em></p>
+<div class="section" id="the-value-iteration-method">
+<h1>The value iteration method<a class="headerlink" href="#the-value-iteration-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="value-iteration-with-example">
+<h2>Value iteration with Example<a class="headerlink" href="#value-iteration-with-example" title="Permalink to this headline">¶</a></h2>
+<p>Value iteration 방법에 대해 소개하기 앞서 아래 다이어그램과 같은 loop를 포함하는 environment가 있다고 가정해보자.</p>
+<p><img alt=".ipynb_checkpoints/assets/1549870883882.png" src=".ipynb_checkpoints/assets/1549870883882.png" /></p>
+<ul class="simple">
+<li>상태 $S_1$에서 $S_2$로 가는 경우의 보상 $r$은 2다. 반대의 경우에 해당하는 보상은 1이다</li>
+<li>Discount factor $\gamma$는 0.9 다</li>
+<li>초기 상태를 $S_1$로 가정하면, agent는 $S_2$로 이동하는 선택지 밖에 없다</li>
+</ul>
+<p>Agent가 $S_1$에서 시작하는 경우 [1,2,1,2,1,2,1,2,1,2,…] 순서로 무한히 돌게 된다. 각 상태에 대한 가치 값을 계산하기 위한 수식은 아래와 같다.
+$$
+V(s_1) = 1+ \gamma(2+\gamma(1+\gamma(2+ …))) = \sum_{i=0}^{\infty}1\gamma^{2i}+2\gamma^{2i+1}
+$$
+Agent가 $S_2$에서 시작하는 경우 [2,1,2,1,2,1,2,1,2,1,…] 순서로 무한히 돌게 되고 마찬가지로 아래와 같이 표현 가능하다.
+$$
+V(s_2) = 2 + \gamma(1+\gamma(2+\gamma(1+…))) = \sum_{i=0}^{\infty}2\gamma^{2i}+1\gamma^{2i+1}
+$$
+두 수식은 크게 다르지 않지만 서로의 보상은 다르기 때문에 수렴하는 값에는 차이가 있다. 약 50번째 까지 계산을 하면 각 상태의 기대값은  $V(s_1)=14.73$ , $V(s_2) = 15.26$ 이다.</p>
+</div>
+<div class="section" id="value-iteration-algorithm">
+<h2>Value iteration algorithm<a class="headerlink" href="#value-iteration-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>앞의 간단한 예제에서 각 상태의 기대값 계산을 위해 반복(iteration)적인 계산 과정을 수행하였는데 이러한 절차를 value iteration algorithm이라고 한다.</p>
+<div class="section" id="a-value-of-states">
+<h3>A. Value of states<a class="headerlink" href="#a-value-of-states" title="Permalink to this headline">¶</a></h3>
+<p>$V_s$로 표현되는 특정 상태 $s$에 대해서 value iteration 절차는 아래와 같다</p>
+<ol class="simple">
+<li>모든 상태에 대한 기대값 $V_{i}$를 모두 초기화 한다. 예를 들어 모든 값을 0으로 초기화한다</li>
+<li>Markov Decision Process로 정의되는 모든 상태에 대해 Bellman update를 수행한다. 수식으로 표현하면 <strong>아래 수식</strong>과 같다</li>
+<li>Step 2를 수치 변화 폭이 작아질때 까지 계속해서 반복한다</li>
+</ol>
+<p>$$
+V_s = \max_{a}\sum_{s’}p_{a,s\to s’}(r_{s,a} + \gamma V_{s’})
+$$</p>
+</div>
+<div class="section" id="b-value-of-actions-q">
+<h3>B. Value of Actions(Q)<a class="headerlink" href="#b-value-of-actions-q" title="Permalink to this headline">¶</a></h3>
+<p>특정 상태 s와 행동 a의 가치를 반환하는 Q함수를 사용해 value iteration 절차를 수행하면 아래와 같다</p>
+<ol class="simple">
+<li>$Q_{s,a}$를 모두 0으로 초기화 한다</li>
+<li>모든 상태 s와 그때의 모든 행동 a에 대해서 <strong>아래의 수식</strong>과 같이 Q함수를 update한다</li>
+<li>수치 변화 폭이 작아지는 시점까지 Step 2를 반복한다</li>
+</ol>
+<p>$$
+Q_{s,a} \leftarrow \sum_{s’}p_{a,s\to s’}(r_{s,a} + \gamma \max_{a’}Q_{s’,a’})
+$$</p>
+</div>
+</div>
+<div class="section" id="limits-of-value-iteration-methods">
+<h2>Limits of value iteration methods<a class="headerlink" href="#limits-of-value-iteration-methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="size-of-state-space-problem">
+<h3>Size of state space problem<a class="headerlink" href="#size-of-state-space-problem" title="Permalink to this headline">¶</a></h3>
+<p>가치함수를 사용하거나 큐함수를 사용하는 경우 모두 모든 상태공간 $S$에 대한 연산을 수행하게된다. 일부 간단한 예시 환경(ex. 4x4 Frozen Lake, GridWorld)에서는 계산이 가능하지만 다음 상태 값이 실수 좌표 영역으로 표시되는 CartPole같은 환경에서는 상태공간이 무한하므로 value iteration을 적용하기 힘들다</p>
+</div>
+<div class="section" id="state-transition-probability-problem">
+<h3>State transition probability problem<a class="headerlink" href="#state-transition-probability-problem" title="Permalink to this headline">¶</a></h3>
+<p>또 다른 문제점은 위의 (A), (B)에서 모두 등장한 상태 이동 확률($p_{a,s \to s’}$)이다. 실제 환경에서는 상태 이동 확률 같은 값을 사전에 모두 조사하는게 불가능한 경우가 많다. 대부분의 문제는 현재 상태 $s_t$가 주어지고 특정 행동 $a_t$을 수행하면 보상 $r_t$과 다음 상태 $s_{t+1}$가 주어질 뿐이다.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Deep Reinforcement Learning Hands-On, Maxim Lapan, 2018</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kwangho Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
