@@ -11,15 +11,15 @@
 	<link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
 		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    
+    <style type="text/css">
+        @import url("background.css");
+    </style>
     <style>
-    nav.navbar {
-      height: 6rem !important;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06) !important;
-    }
-       
-        
-  </style>
+        nav.navbar {
+          height: 6rem !important;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06) !important;
+        }
+    </style>
     
 </head>
 
@@ -28,8 +28,10 @@
     <!-- START NAV -->
   <nav class="navbar">
     <div class="container">
+       
+        
       <div class="navbar-brand">
-        <a class="navbar-item" href="../">
+        <a class="navbar-item" href="./intro.html">
           <img src="logo2.png" alt="Logo">
         </a>
         <span class="navbar-burger burger" data-target="navbarMenu">
@@ -40,11 +42,18 @@
       </div>
       <div id="navbarMenu" class="navbar-menu">
         <div class="navbar-end">
-          <a class="navbar-item is-size-5 has-text-weight-semibold">
-            Results
+          
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="./intro.html">
+            Submit
           </a>
-          <a class="navbar-item is-size-5 has-text-weight-semibold">
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="./result.html">
+            Result
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="./about.html">
             About
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="https://github.com/leekh7411/MCTS-seq">
+            GitHub
           </a>
         </div>
       </div>
@@ -56,6 +65,8 @@
     
 	<section class="hero is-fullheight">
 		<div class="hero-body">
+            
+
 			<div class="container has-text-centered">
                 <h1 class="title is-1">Monte-Carlo Tree Search(MCTS)-sequences</h1>
                 <p class="is-size-4">In silico selection of RNA aptamers for a target protein
@@ -75,18 +86,20 @@
                         
                         <br>
                         <h1 class="title is-4">Task ID / Email</h1>
-                        <p class="is-size-5">Before submit the job, ...</p>
+                        <p class="is-size-5">
+                            Please write your e-mail and unique task ID on the form. After the prediction job finished, we will send a notification through the e-mail and you can check the predictions in our <a href="./result.html">result page</a>.  
+                        </p>
                         <br>
                                                 
                         <br>
                         <h1 class="title is-4">Aptamer length / Iterations / Target protein</h1>
-                        <p class="is-size-5">Before submit the job, ...</p>
+                        <p class="is-size-5">You can predict with specific length aptamer sequences (Aptammer length). The iteration is the number of loop in MCTS-seq sampling phase. Most important thing is a target protein sequence. Please write the amino-acid sequence of target protein in the form. MCTS-seq calculates a binding affinity score between sampled sequence and the protein. The results are used for better sample extraction.</p>
                         <br>
                         
-                        <br>
+<!--                         <br>
                         <h1 class="title is-4">Submit / Show results</h1>
                         <p class="is-size-5">Before submit the job, ...</p>
-                        <br>
+                        <br> -->
                         
                         
                         
@@ -101,7 +114,7 @@
 						<div class="field">
 							<label class="label">Email (confirmation about your task status)</label>
 							<div class="control">
-								<input class="input is-medium" type="email" id="mcts-seq-input-email">
+								<input class="input is-medium" type="text" id="mcts-seq-input-email">
 							</div>
 						</div>
                         
@@ -131,12 +144,12 @@
 							<button type="submit" class="button is-link is-fullwidth has-text-weight-medium is-medium" id="mcts-seq-btn-submit">Submit</button>
 						</div>
                         </div>
-                        
+<!--                         
                         <div class="field">
 						<div class="control">
 							<button type="submit" class="button is-link is-fullwidth has-text-weight-medium is-medium" id="mcts-seq-btn-show-results">Show results</button>
 						</div>
-                        </div>
+                        </div> -->
                         
 					</div>
 				</div>
@@ -146,7 +159,7 @@
     
     
     <footer class="footer">
-    <div class="content has-text-centered">
+    <div class="content has-text-centered">        
       <p>
         <strong>Bulma - Blog theme</strong> by <a href="https://gonzalojs.com">Gonzalo Gutierrez</a>. Based on the <a
           href="http://jigsaw-blog-staging.tighten.co/">jigsaw-blog</a>. The source code is licensed
@@ -156,5 +169,6 @@
   </footer>
 
 </body>
-<script type="text/javascript" src="btn.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="intro.js"></script>
 </html>
