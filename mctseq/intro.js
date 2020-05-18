@@ -1,4 +1,4 @@
-BACKEND_SERVER_URL = "http://164.125.34.236:18945"
+BACKEND_SERVER_URL = "//164.125.34.236:18945"
 
 // MCTS-seq web-api button click listener
 var mcts_seq_btn_submit = document.getElementById('mcts-seq-btn-submit');

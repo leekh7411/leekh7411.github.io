@@ -1,4 +1,4 @@
-BACKEND_SERVER_URL = "http://164.125.34.236:18945"
+BACKEND_SERVER_URL = "//164.125.34.236:18945"
 
 document.getElementById('mcts-seq-result-btn-load').onclick = function()
 {
@@ -90,7 +90,7 @@ function mcts_seq_result_add_task_info_in_container(task_info, out_idx){
     var target_protein = task_info["target-protein"];
     var task_id = task_info["task-id"];
     mcts_seq_result_task_info_element(email, task_id, sub_time, job_status, target_protein, out_idx);
-
+    
 }
 
 function mcts_seq_result_task_status_element(num_tasks){
