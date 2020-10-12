@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="apta-mcts">Apta-MCTS</h1>
+<p><img src="https://github.com/leekh7411/Apta-MCTS/blob/master/figs/overview.png?raw=true" alt=""><br>
+Supporting code for the paper <strong>“Predicting aptamer sequences that interact with target proteins using Aptamer-Protein Interaction classifiers and a Monte-Carlo tree search approach”</strong>(currently being prepared).</p>
+<h2 id="a-aptamer-protein-interaction-api-classifiers"><strong>(A)</strong> Aptamer-Protein-Interaction (API) classifiers</h2>
+<p>Implementations of how to train the Aptamer-Protein Interaction classifier using Random Forest are described in a <code>classifier.py</code>. We train two versions of API classifiers according to the datasets. The benchmark datasets are available in the <code>datasets/</code> folder with json format files.</p>
+<h4 id="list-of-benchmark-dataset"><em>List of benchmark dataset</em></h4>
+
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Positives</th>
+<th>Negatives</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0086729">Li et al, 2014</a></td>
+<td>580</td>
+<td>1740</td>
+<td>Training data for API classifiers</td>
+</tr>
+<tr>
+<td><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0086729">Li et al, 2014</a></td>
+<td>145</td>
+<td>435</td>
+<td>Validation data for API classifiers</td>
+</tr>
+<tr>
+<td><a href="https://ieeexplore.ieee.org/document/8890705">Lee and Han, 2019</a></td>
+<td>157</td>
+<td>493</td>
+<td>Training data for API classifiers</td>
+</tr>
+<tr>
+<td><a href="https://ieeexplore.ieee.org/document/8890705">Lee and Han, 2019</a></td>
+<td>56</td>
+<td>56</td>
+<td>Validation data for API classifiers and Apta-MCTS</td>
+</tr>
+</tbody>
+</table><h4 id="how-to-train-api-classifiers"><em>How to train API classifiers</em></h4>
+<pre class=" language-sh"><code class="prism  language-sh">python3 classifier.py \
+-dataset_dir=datasets/li2014 \
+-tag=rf-iCTF-li2014 \
+-min_trees=35 \
+-max_trees=200 \
+-n_jobs=20 \
+-num_models=1000
+</code></pre>
+<p>The <code>classifier.py</code> takes inputs as a sequence list written of json format (see the .json files in <code>datasets/&lt;source&gt;/train.json or test.json</code>) through the parameter <code>dataset_dir</code>. Second parameter <code>tag</code> is an identifier for your API classifiers.  The range for number of trees in Random Forest algorithm are feed through the <code>min_trees</code> and <code>max_trees</code> (integer values). Due to this classifiers built on the scikit-learn packages, <code>n_jobs</code> has same meaning with the scikit-learn models. We select best scored API classifier for the score function of Apta-MCTS, so there are multiple models (number of models = <code>num_models</code>) gerneated for selection.  Below table is binary classifier evaluation scores with respect to the our appoaches (RF with iCTF) and others for two benchmark datasets</p>
+<h4 id="performace-references"><em>Performace references</em></h4>
+
+<table>
+<thead>
+<tr>
+<th>API classifier</th>
+<th>Training set</th>
+<th>Sensitivity</th>
+<th>Specificity</th>
+<th>Accuracy</th>
+<th>Yuden’s Index</th>
+<th>MCC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Li et al. 2014</td>
+<td>Li et al. 2014</td>
+<td>0.483</td>
+<td>0.871</td>
+<td>0.774</td>
+<td>0.354</td>
+<td>0.372</td>
+</tr>
+<tr>
+<td>Zhang et al. 2016</td>
+<td>Li et al. 2014</td>
+<td><strong>0.738</strong></td>
+<td>0.713</td>
+<td>0.719</td>
+<td><strong>0.451</strong></td>
+<td>0.398</td>
+</tr>
+<tr>
+<td><strong>RF with iCTF</strong></td>
+<td>Li et al. 2014</td>
+<td>0.303</td>
+<td><strong>0.999</strong></td>
+<td><strong>0.826</strong></td>
+<td>0.303</td>
+<td><strong>0.496</strong></td>
+</tr>
+<tr>
+<td>Lee and Han 2019</td>
+<td>Lee and Han 2019</td>
+<td>0.768</td>
+<td><strong>0.661</strong></td>
+<td>0.714</td>
+<td>0.429</td>
+<td>0.431</td>
+</tr>
+<tr>
+<td><strong>RF with iCTF</strong></td>
+<td>Lee and Han 2019</td>
+<td><strong>0.982</strong></td>
+<td>0.554</td>
+<td><strong>0.768</strong></td>
+<td><strong>0.536</strong></td>
+<td><strong>0.593</strong></td>
+</tr>
+</tbody>
+</table><p>With the perspective of machine learning models, the result of <strong>RF with iCTF</strong> is not a good performaces, but we just designed the classifiers only takes the patterns of sequences as inputs (looking forward to the day when the data volume [#aptamer-protein complexs] grows).</p>
+<h2 id="b-generative-model-for-candidate-aptamers"><strong>(B)</strong> Generative model for candidate aptamers</h2>
+<p>The candidate aptamer sequence generation model Apta-MCTS takes the <strong>target protein sequence</strong> and <strong>length of candidate aptamer</strong> as inputs. With the 8-node tree structure for RNA sequences what we desigend, Monte-Carlo tree search (MCTS) algorithm finds next base for each step. Whole processes of sequence sampling are based on an iterative forward algorithm. So, what is the outputs? All candidates in each MCTS processes are collected and sorted based on the score (note that the scores are from the score function that is the best performance API classifier what we trained before). After some post-processing (<em>i.g.</em> remove redundant secondary structure sequences), Apta-MCTS returns only top-k candidates.</p>
+<h4 id="how-to-generate-candidate-aptamers-for-a-target-protein"><em>How to generate candidate aptamers for a target protein</em></h4>
+<p>Apta-MCTS simply takes the configuration json file as an input for generation.</p>
+<pre class=" language-sh"><code class="prism  language-sh">python3 generator.py -q=queries/sample.json
+</code></pre>
+<p>How to write the configuration file? First, you need a target protein name and sequence. Specify the target protein information <code>name</code> and <code>seq</code> as below,</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token string">"protein"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+	<span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"&lt;target protein name&gt;"</span><span class="token punctuation">,</span>
+	<span class="token string">"seq"</span> <span class="token punctuation">:</span> <span class="token string">"&lt;target protein sequence&gt;"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>and set the parameters of generative models as below,</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token string">"model"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+	<span class="token string">"method"</span>         <span class="token punctuation">:</span> <span class="token string">"Lee_and_Han_2019|Apta-MCTS"</span><span class="token punctuation">,</span>
+	<span class="token string">"score_function"</span> <span class="token punctuation">:</span> <span class="token string">"&lt;path of the weights of the pre-trained API classifer&gt;"</span><span class="token punctuation">,</span>
+	<span class="token string">"k"</span>              <span class="token punctuation">:</span> <span class="token string">"&lt;number of top scored candidates&gt;"</span><span class="token punctuation">,</span>
+	<span class="token string">"bp"</span>             <span class="token punctuation">:</span> <span class="token string">"&lt;length of candidate RNA-aptamer sequences&gt;"</span><span class="token punctuation">,</span>
+	<span class="token string">"n_iter"</span>         <span class="token punctuation">:</span> <span class="token string">"&lt;number of iterations for each base when method is Apta-MCTS&gt;"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Our model name is the Apta-MCTS (and Lee and Han 2019 method also available, note that it is for validation of our paper experiments), set the <code>method</code> as Apta-MCTS. The <code>score_function</code> is the path of pre-trained API classifier’s weight (available in <code>classifiers/&lt;model_name&gt;/&lt;weight_file&gt;</code>). The parameter <code>k</code> is the number of final candidate output sequences. The parameter <code>bp</code> is a length of candidate aptamer sequence, and remember that our iterative sampling algorithm repeats <code>bp</code> times. The number of repeatition of MCTS in each iteration is a <code>n_iter</code> parameter.</p>
+<p>Almost finished, next job is just construct other empty template as below,</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+    <span class="token string">"targets"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"&lt;experiment_name&gt;"</span><span class="token punctuation">:</span><span class="token punctuation">{</span>
+            <span class="token string">"model"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"method"</span> <span class="token punctuation">:</span> <span class="token string">"Lee_and_Han_2019|Apta-MCTS"</span><span class="token punctuation">,</span>
+                <span class="token string">"score_function"</span> <span class="token punctuation">:</span> <span class="token string">"&lt;path of the weights of the pre-trained API classifer&gt;"</span><span class="token punctuation">,</span>
+                <span class="token string">"k"</span>      <span class="token punctuation">:</span> <span class="token string">"&lt;number of top scored candidates&gt;"</span><span class="token punctuation">,</span>
+                <span class="token string">"bp"</span>     <span class="token punctuation">:</span> <span class="token string">"&lt;length of candidate RNA-aptamer sequences&gt;"</span><span class="token punctuation">,</span>
+                <span class="token string">"n_iter"</span> <span class="token punctuation">:</span> <span class="token string">"&lt;number of iterations for each base when method is Apta-MCTS&gt;"</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">"protein"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"seq"</span> <span class="token punctuation">:</span> <span class="token string">"&lt;target protein sequence&gt;"</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">"aptamer"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"name"</span>      <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">"seq"</span>       <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">"candidate-aptamer"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"score"</span>    <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">"seq"</span>      <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">"ss"</span>       <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">"mfe"</span>      <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"n_jobs"</span> <span class="token punctuation">:</span> <span class="token string">"&lt;number of available cores for the multiprocessing tasks&gt;"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The parameter <code>experiment_name</code> is an identifier of the task, if you want multiple tasks then initialize mutiple experiment templates as a single file and write the available number of processes in <code>n_jobs</code>, this script support the multiprocessing of tasks through default python multiprocessing library.</p>
+<p>After finished the tasks, the candidates of each task are saved in the <code>candidate-aptamer</code> field like this,</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token string">"candidate-aptamer"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"score"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token number">0.4675324675324675</span><span class="token punctuation">,</span>
+        <span class="token number">0.45454545454545453</span><span class="token punctuation">,</span>
+        <span class="token number">0.45454545454545453</span><span class="token punctuation">,</span>
+        <span class="token number">0.45454545454545453</span><span class="token punctuation">,</span>
+        <span class="token number">0.45454545454545453</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"seq"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"GUUAGACGUGGACGAACCUAGGGUGUAGAA"</span><span class="token punctuation">,</span>
+        <span class="token string">"AAGACGUGGACGAACCUAGGGUGUAGCAAC"</span><span class="token punctuation">,</span>
+        <span class="token string">"AAAGACGUGGACGAACCUAGGGUGUAGCAG"</span><span class="token punctuation">,</span>
+        <span class="token string">"GCAAGACGUGGACGAACCUAGGGUGUAGAG"</span><span class="token punctuation">,</span>
+        <span class="token string">"GAAGACGUGGACGAACCUAGGGUGUAGCAC"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"ss"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token string">".(((.((.(((......)))..)).))).."</span><span class="token punctuation">,</span>
+        <span class="token string">"....(.(((......))).).........."</span><span class="token punctuation">,</span>
+        <span class="token string">".....(.(((......))).)........."</span><span class="token punctuation">,</span>
+        <span class="token string">"(((...(.(((......))).).)))...."</span><span class="token punctuation">,</span>
+        <span class="token string">"......(((.....(((...)))....)))"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"mfe"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token operator">-</span><span class="token number">2.4000000953674316</span><span class="token punctuation">,</span>
+        <span class="token operator">-</span><span class="token number">2.200000047683716</span><span class="token punctuation">,</span>
+        <span class="token operator">-</span><span class="token number">2.200000047683716</span><span class="token punctuation">,</span>
+        <span class="token operator">-</span><span class="token number">2.4000000953674316</span><span class="token punctuation">,</span>
+        <span class="token operator">-</span><span class="token number">3.0</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Please check the details in the sample configuration file in <code>quries/sample.json</code>.</p>
+</div>
+</body>
+
+</html>
